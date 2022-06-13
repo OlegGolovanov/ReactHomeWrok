@@ -1,0 +1,52 @@
+.AppFilterProducts
+.nav
+    width: 261px
+    background-color: rgba(249,249,249,0.0)
+    border: 4px solid #72c9d4
+    padding: 29px 0px 25px 0px
+    &__title
+        font-family: Lato
+        font-size: 21px
+        line-height: 1.2
+        font-weight: 700
+        text-transform: uppercase
+        letter-spacing: 0.025em
+        color: #36949f
+        width: 212px
+        margin: 0 auto
+        margin-bottom: 29px
+    
+.items-nav
+    border-top: 1px solid #72c9d4
+    border-bottom: 1px solid #72c9d4
+    padding: 27px 48px 30px 23px
+    &__title
+        font-family: Lato
+        font-size: 16px
+        line-height: 22px
+        font-weight: 700
+        color: #333333
+    &__wrapper
+        list-style: none
+        padding: 0px 0px 0px 0px
+
+    &__product
+        display: flex
+        justify-content: space-between
+        align-items: center
+        position: relative
+    &__close
+        position: relative
+        width: 10px
+        height: 10px
+        right: -3px
+        &:before, &:after
+            position: absolute
+            content: ' '
+            height: 10px
+            width: 2px
+            background-color: #53b5de
+        &:before
+            transform: rotate(45deg)
+        &:after
+            transform: rotate(-45deg)
