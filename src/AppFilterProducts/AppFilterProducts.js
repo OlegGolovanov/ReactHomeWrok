@@ -11,11 +11,20 @@ class AppFilterProducts extends Component {
             {name: "Clear Fit Luxury LT.20"},
             {name: "Ammity ATM 720 TFT+"}
         ],
+
+        checkboxData: [
+            {name: "Сlear-fit"},
+            {name: "Diadora"},
+            {name: "Hasttings"},
+            {name: "Carbon-fitness"},
+            {name: "Nordic Track"}
+           
+        ]
     }
-    onDel = (name) => {
+    onDelLiData = (name) => {
         this.setState({
             liData: this.state.liData.filter(item=> {
-                return item.name != name                      
+                return item.name !== name                      
             })
         })      
     }
@@ -25,10 +34,19 @@ class AppFilterProducts extends Component {
             return(
                 <li key = {name} className="items-nav__product">
                     <a href="#" className="items-nav__item">{name}</a>
-                    <div onClick={(e)=>{this.onDel(name)}} className="items-nav__close"></div>                            
+                    <div onClick={(e)=>{this.onDelLiData(name)}} className="items-nav__close"></div>                            
                 </li> 
             )
         })
+
+        const checkbox = this.state.checkboxData.map(({name}) => {
+            return(
+                <li key = {name} className="items-nav__product">
+                    <input type="checkbox"/>
+                    <div>{name}</div>
+                </li> 
+            )
+        }) 
         
         return(
             <section className="AppFilterProducts"> 
@@ -41,6 +59,14 @@ class AppFilterProducts extends Component {
                                     {li}                              
                                 </ul>                                              
                         </div>
+
+                        <div className="nav__item items-nav">
+                            <div className="items-nav__title">Производитель:</div>
+                                <ul className="items-nav__wrapper">
+                                     {checkbox}                            
+                                </ul>                                              
+                        </div>
+
                     </nav>
                 </div>
             </section>
