@@ -17,8 +17,7 @@ class AppFilterProducts extends Component {
             {name: "Diadora"},
             {name: "Hasttings"},
             {name: "Carbon-fitness"},
-            {name: "Nordic Track"}
-           
+            {name: "Nordic Track"}           
         ]
     }
     onDelLiData = (name) => {
@@ -59,14 +58,15 @@ class AppFilterProducts extends Component {
                                     {li}                              
                                 </ul>                                              
                         </div>
-
                         <div className="nav__item items-nav">
-                            <div className="items-nav__title">Производитель:</div>
-                                <ul className="items-nav__wrapper">
-                                     {checkbox}                            
-                                </ul>                                              
+                            <div className="items-nav_manufacturer">
+                                <div className="items-nav__title">Производитель:</div>
+                                <div className="items-nav__icons">аыва</div>
+                            </div>
+                            <ul className="items-nav__wrapper">
+                                {checkbox}                            
+                            </ul>                                              
                         </div>
-
                     </nav>
                 </div>
             </section>
