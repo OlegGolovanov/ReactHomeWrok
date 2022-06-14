@@ -69,6 +69,10 @@ class AppFilterProducts extends Component {
                         </div>
                     </nav>
                 </div>
+
+                
+
+
             </section>
         )
     }
