@@ -13,11 +13,9 @@ class AppFilterProducts extends Component {
         ],
 
         checkboxData: [
-            {name: "Сlear-fit"},
-            {name: "Diadora"},
-            {name: "Hasttings"},
-            {name: "Carbon-fitness"},
-            {name: "Nordic Track"}           
+            {idH2: "headingOne", id: "collapseOne", dataBsTarget: "#collapseOne", ariaExpanded: "true", ariaControls: "collapseOne", class: "accordion-collapse", ariaLabelledby: "headingOne"},
+            {idH2: "headingTwo", id: "collapseTwo", dataBsTarget: "#collapseTwo", ariaExpanded: "true", ariaControls: "collapseTwo", class: "accordion-collapse", ariaLabelledby: "headingTwo"},
+            {idH2: "headingThree", id: "collapseThree", dataBsTarget: "#collapseThree", ariaExpanded: "true", ariaControls: "collapseThree", class: "accordion-collapse", ariaLabelledby: "headingThree"},          
         ]
     }
     onDelLiData = (name) => {
@@ -38,12 +36,20 @@ class AppFilterProducts extends Component {
             )
         })
 
-        const checkbox = this.state.checkboxData.map(({name}) => {
+        const accordion = this.state.checkboxData.map((item) => {
             return(
-                <li key = {name} className="items-nav__product">
-                    <input type="checkbox"/>
-                    <div>{name}</div>
-                </li> 
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id={item.idH2}>
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Accordion Item #1
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+            </div>
             )
         }) 
         
@@ -58,14 +64,8 @@ class AppFilterProducts extends Component {
                                     {li}                              
                                 </ul>                                              
                         </div>
-                        <div className="nav__item items-nav">
-                            <div className="items-nav_manufacturer">
-                                <div className="items-nav__title">Производитель:</div>
-                                <div className="items-nav__icons">аыва</div>
-                            </div>
-                            <ul className="items-nav__wrapper">
-                                {checkbox}                            
-                            </ul>                                              
+                        <div class="accordion" id="accordionExample">
+                            
                         </div>
                     </nav>
                 </div>
