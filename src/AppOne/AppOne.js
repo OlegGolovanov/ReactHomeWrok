@@ -2,6 +2,12 @@ import './AppOne.css';
 import AppOneHeader from "../AppOneHeader/AppOneHeader"
 import AppFilterProducts from "../AppFilterProducts/AppFilterProducts"
 import {Component} from "react"
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+
 
 class AppOne extends Component {
   state = {
@@ -30,8 +36,11 @@ class AppOne extends Component {
     this.setState({
       
       accordion: this.state.accordion.map(item=> {
+        if(dataAttribute === item.dataAttribute && item.show === "show" && item.collapsed === "" ){
+          return {...item, show: "", collapsed: "collapsed"}          
+        }
         if(dataAttribute === item.dataAttribute){
-          return {...item, show: "show", collapsed: ""}
+          return {...item, show: "show", collapsed: ""}          
         }
         return {...item, show: "", collapsed: "collapsed"}
       })
@@ -53,9 +62,24 @@ class AppOne extends Component {
       <>
       <AppOneHeader/>
       <AppFilterProducts
+        li = {li}
         state = {this.state.liData}
+        accordion = {this.state.accordion}
         changeClassAccordion = {this.changeClassAccordion}/>
+         <Swiper
+            spaceBetween={1}
+            slidesPerView={1}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+            >
+            <SwiperSlide>Олег</SwiperSlide>
+            <SwiperSlide>Мама</SwiperSlide>
+            <SwiperSlide>Папа</SwiperSlide>
+            <SwiperSlide>Бабушка</SwiperSlide>
+          
+        </Swiper>
     </>
+    
     );
   }
 }
