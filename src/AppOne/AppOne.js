@@ -11,7 +11,9 @@ class AppOne extends Component {
         {name: "Ammity ATM 720 TFT+"}
     ],
     accordion: [
-      {show: "show", collapsed: "collapsed"}
+      {dataAttribute: "#collapseOne", show: "", collapsed: "collapsed"},
+      {dataAttribute: "#collapseTwo", show: "", collapsed: "collapsed"},
+      {dataAttribute: "#collapseThree", show: "", collapsed: "collapsed"},
     ],
   }
 
@@ -23,11 +25,20 @@ class AppOne extends Component {
     })     
   }
 
-  changeClassAccordion = () => {
+  changeClassAccordion = (dataAttribute) => {
+    console.log(dataAttribute);
     this.setState({
-      show: this.state
-    })
-  }  
+      
+      accordion: this.state.accordion.map(item=> {
+        if(dataAttribute === item.dataAttribute){
+          return {...item, show: "show", collapsed: ""}
+        }
+        return {...item, show: "", collapsed: "collapsed"}
+      })
+    })  
+  }
+
+
   
   render(){
     const li = this.state.liData.map(({name}) => {
@@ -42,8 +53,8 @@ class AppOne extends Component {
       <>
       <AppOneHeader/>
       <AppFilterProducts
-        liData = {li}
-        state = {this.state.liData}/>
+        state = {this.state.liData}
+        changeClassAccordion = {this.changeClassAccordion}/>
     </>
     );
   }

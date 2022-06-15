@@ -5,17 +5,10 @@ import { Component } from "react"
 
 
 class AppFilterProducts extends Component {
-    // state = {
-    //     liData: [
-    //         {name: "NordicTrack C100"},
-    //         {name: "Clear Fit Luxury LT.20"},
-    //         {name: "Ammity ATM 720 TFT+"}
-    //     ],
-    // }
-    
+        
 
     render(){
-        const {liData} = this.props   
+        const {liData, changeClassAccordion} = this.props   
         return(
             <section className="AppFilterProducts"> 
                 <div className="_container">            
@@ -36,7 +29,14 @@ class AppFilterProducts extends Component {
                 <div className="accordion" id="accordionExample">
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingOne">
-                            <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button 
+                            className="accordion-button" 
+                            type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#collapseOne" 
+                            aria-expanded="true" 
+                            aria-controls="collapseOne"
+                            onClick={(e)=> changeClassAccordion(e.target.getAttribute("data-bs-target"))}
+                            >
                                 Accordion Item #1
                             </button>
                         </h2>
@@ -52,7 +52,7 @@ class AppFilterProducts extends Component {
                     
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTwo">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <button onClick={(e)=> changeClassAccordion(e.target.getAttribute("data-bs-target"))} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Accordion Item #2
                         </button>
                         </h2>
@@ -64,7 +64,7 @@ class AppFilterProducts extends Component {
                     </div>
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingThree">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <button onClick={(e)=> changeClassAccordion(e.target.getAttribute("data-bs-target"))} className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             Accordion Item #3
                         </button>
                         </h2>
