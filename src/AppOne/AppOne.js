@@ -5,6 +5,18 @@ import AppSliderSwiper from "../AppSliderSwiper/AppSliderSwiper"
 import {Component} from "react"
 
 
+// Import Swiper styles
+import brand from "../img/AppSliderSwiper/brand.jpeg";
+import bulls from "../img/AppSliderSwiper/bulls.png";
+import cocaCola from "../img/AppSliderSwiper/CocaCola.jpeg";
+import football from "../img/AppSliderSwiper/football.jpeg";
+import guchi from "../img/AppSliderSwiper/guchi.jpeg";
+import lacoste from "../img/AppSliderSwiper/Lacoste.jpg";
+import nike from "../img/AppSliderSwiper/nike.jpeg";
+import puma from "../img/AppSliderSwiper/puma.jpeg";
+import reebork from "../img/AppSliderSwiper/reebork.png";
+import sport from "../img/AppSliderSwiper/sport.jpeg";
+
 
 class AppOne extends Component {
   state = {
@@ -17,7 +29,19 @@ class AppOne extends Component {
       {dataAttribute: "#collapseOne", show: "", collapsed: "collapsed"},
       {dataAttribute: "#collapseTwo", show: "", collapsed: "collapsed"},
       {dataAttribute: "#collapseThree", show: "", collapsed: "collapsed"},
-    ],
+    ],    
+    dataSlide: [
+        {lable: brand},
+        {lable: bulls},
+        {lable: cocaCola},
+        {lable: football},
+        {lable: guchi},
+        {lable: lacoste},
+        {lable: nike},
+        {lable: puma},
+        {lable: reebork},      
+        {lable: sport},
+    ],  
   }
 
   onDelLiData = (name) => {
@@ -29,9 +53,7 @@ class AppOne extends Component {
   }
 
   changeClassAccordion = (dataAttribute) => {
-    console.log(dataAttribute);
-    this.setState({
-      
+    this.setState({      
       accordion: this.state.accordion.map(item=> {
         if(dataAttribute === item.dataAttribute && item.show === "show" && item.collapsed === "" ){
           return {...item, show: "", collapsed: "collapsed"}          
@@ -46,27 +68,18 @@ class AppOne extends Component {
 
 
   
-  render(){
-    const li = this.state.liData.map(({name}) => {
-      return(
-          <li key = {name} className="items-nav__product">
-              <a href="#" className="items-nav__item">{name}</a>
-              <div onClick={(e)=>{this.onDelLiData(name)}} className="items-nav__close"></div>                            
-          </li> 
-      )
-  })
+  render(){    
     return (
       <>
-      <AppOneHeader/>
-      <AppFilterProducts
-        li = {li}
-        state = {this.state.liData}
-        accordion = {this.state.accordion}
-        changeClassAccordion = {this.changeClassAccordion}/>
-      <AppSliderSwiper/>
-        
-    </>
-    
+        <AppOneHeader/>
+        <AppFilterProducts
+          onDelLiData = {this.onDelLiData}
+          liData = {this.state.liData}
+          accordion = {this.state.accordion}
+          changeClassAccordion = {this.changeClassAccordion}
+        />
+        <AppSliderSwiper dataSlide = {this.state.dataSlide}/>        
+      </>
     );
   }
 }

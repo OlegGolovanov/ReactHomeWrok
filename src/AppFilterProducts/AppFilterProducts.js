@@ -8,7 +8,23 @@ class AppFilterProducts extends Component {
         
 
     render(){
-        const {li, changeClassAccordion, accordion} = this.props   
+        const div = this.props.liData.map(({name}) => {
+            console.log(name);
+            return(
+                <div key ={name}>
+                    <li>
+                        <label for={name}>{name}</label>
+                        <input id={name} type="checkbox" placeholder/>
+                    </li>
+                   <li key = {name} className="items-nav__product">
+                        <a href="#" className="items-nav__item">{name}</a>
+                        <div onClick={(e)=>{this.props.onDelLiData(name)}} className="items-nav__close"></div>                          
+                    </li>  
+                </div>
+                
+            )
+          })
+        const {changeClassAccordion, accordion} = this.props   
         return(
             <section className="AppFilterProducts"> 
                 <div className="_container">            
@@ -17,7 +33,7 @@ class AppFilterProducts extends Component {
                         <div className="nav__item items-nav">
                             <div className="items-nav__title">Товары для сравнения</div>
                                 <ul className="items-nav__wrapper">
-                                    {li}                              
+                                    {div}                              
                                 </ul>                                              
                         </div>
                         <div className="accordion" id="accordionExample">
