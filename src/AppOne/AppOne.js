@@ -1,12 +1,9 @@
 import './AppOne.css';
 import AppOneHeader from "../AppOneHeader/AppOneHeader"
 import AppFilterProducts from "../AppFilterProducts/AppFilterProducts"
+import AppSliderSwiper from "../AppSliderSwiper/AppSliderSwiper"
 import {Component} from "react"
-// Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-// Import Swiper styles
-import 'swiper/css';
 
 
 class AppOne extends Component {
@@ -66,18 +63,8 @@ class AppOne extends Component {
         state = {this.state.liData}
         accordion = {this.state.accordion}
         changeClassAccordion = {this.changeClassAccordion}/>
-         <Swiper
-            spaceBetween={1}
-            slidesPerView={1}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => console.log(swiper)}
-            >
-            <SwiperSlide>Олег</SwiperSlide>
-            <SwiperSlide>Мама</SwiperSlide>
-            <SwiperSlide>Папа</SwiperSlide>
-            <SwiperSlide>Бабушка</SwiperSlide>
-          
-        </Swiper>
+      <AppSliderSwiper/>
+        
     </>
     
     );
