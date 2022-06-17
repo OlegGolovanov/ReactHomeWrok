@@ -5,9 +5,14 @@ import { Component } from "react"
 
 
 class AppFilterProducts extends Component {
-        
+    
+    renderSlide = (id) => {
+        this.props.onChangeShowDataSlide(id)
+        this.props.showDataSlide()
+    }
 
     render(){
+        
         const li = this.props.liData.map(({name}) => {
             return(                
                 <li key = {name} className="items-nav__product">
@@ -15,13 +20,13 @@ class AppFilterProducts extends Component {
                     <div onClick={(e)=>{this.props.onDelLiData(name)}} className="items-nav__close"></div>                          
                 </li>
             )
-          })
+        })
 
         const liSlide = this.props.dataSlide.map(({lable, id}) => {
             return(
                 <li className="items-nav__product" key={lable}>
                     <label htmlFor={id}>{id}</label>
-                    <input id={id} type="checkbox"/>
+                    <input id={id} onClick={(e)=> {this.renderSlide(id)}} type="checkbox"/>
                 </li>
             )
         })

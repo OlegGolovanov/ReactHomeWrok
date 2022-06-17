@@ -45,23 +45,29 @@ class AppOne extends Component {
 
   }
 
+  
+
   showDataSlide = () => {
     this.setState({
       dataSlide: this.state.dataSlide.filter(({show})=> {
-        if(show === true) {
-          return
-        }
+          return show === true        
       })
     })
   }
 
-  onChangeShowDataSlide = (show) => {
+  onChangeShowDataSlide = (id) => {
     this.setState({
-      dataSlide: this.state.dataSlide.map(item => {
-        
+      dataSlide: this.state.dataSlide.map(item => {            
+        if(item.id === id) {  
+          item.show = !item.show        
+          // return {...item, show: !item.show}
+          return item
+        }
+        return
       })
     })
   }
+
 
   onDelLiData = (name) => {
     this.setState({
@@ -95,6 +101,8 @@ class AppOne extends Component {
           accordion = {this.state.accordion}
           changeClassAccordion = {this.changeClassAccordion}
           dataSlide = {this.state.dataSlide}
+          onChangeShowDataSlide = {this.onChangeShowDataSlide}
+          showDataSlide = {this.showDataSlide}
         />
         <AppSliderSwiper dataSlide = {this.state.dataSlide}/>        
       </>
