@@ -23,9 +23,9 @@ class AppSliderSwiper extends Component {
             <section className="_container AppSliderSwiper"> 
                 <Swiper                    
                     modules={[Grid]}
-                    spaceBetween={1}
-                    slidesPerView={3}
-                    grid = {{rows: 3,
+                    spaceBetween={10}
+                    slidesPerView={2}
+                    grid = {{rows: 2,
                             fill: "row"}}>
                     {swiperSlide}           
                 </Swiper>

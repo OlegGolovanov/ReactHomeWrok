@@ -5,7 +5,7 @@ import AppSliderSwiper from "../AppSliderSwiper/AppSliderSwiper"
 import {Component} from "react"
 
 
-// Import Swiper styles
+// Import img
 import brand from "../img/AppSliderSwiper/brand.jpeg";
 import bulls from "../img/AppSliderSwiper/bulls.png";
 import cocaCola from "../img/AppSliderSwiper/CocaCola.jpeg";
@@ -31,17 +31,36 @@ class AppOne extends Component {
       {dataAttribute: "#collapseThree", show: "", collapsed: "collapsed"},
     ],    
     dataSlide: [
-        {lable: brand},
-        {lable: bulls},
-        {lable: cocaCola},
-        {lable: football},
-        {lable: guchi},
-        {lable: lacoste},
-        {lable: nike},
-        {lable: puma},
-        {lable: reebork},      
-        {lable: sport},
+        {lable: brand, id: "brand", show: true},
+        {lable: bulls, id: "bulls", show: true},
+        {lable: cocaCola, id: "cocaCola", show: true},
+        {lable: football, id: "football", show: true},
+        {lable: guchi, id: "guchi", show: true},
+        {lable: lacoste, id: "lacoste", show: true},
+        {lable: nike, id: "nike", show: true},
+        {lable: puma, id: "puma", show: true},
+        {lable: reebork, id: "reebork", show: true},      
+        {lable: sport, id: "sport", show: true},
     ],  
+
+  }
+
+  showDataSlide = () => {
+    this.setState({
+      dataSlide: this.state.dataSlide.filter(({show})=> {
+        if(show === true) {
+          return
+        }
+      })
+    })
+  }
+
+  onChangeShowDataSlide = (show) => {
+    this.setState({
+      dataSlide: this.state.dataSlide.map(item => {
+        
+      })
+    })
   }
 
   onDelLiData = (name) => {
@@ -65,10 +84,8 @@ class AppOne extends Component {
       })
     })  
   }
-
-
   
-  render(){    
+  render(){
     return (
       <>
         <AppOneHeader/>
@@ -77,6 +94,7 @@ class AppOne extends Component {
           liData = {this.state.liData}
           accordion = {this.state.accordion}
           changeClassAccordion = {this.changeClassAccordion}
+          dataSlide = {this.state.dataSlide}
         />
         <AppSliderSwiper dataSlide = {this.state.dataSlide}/>        
       </>

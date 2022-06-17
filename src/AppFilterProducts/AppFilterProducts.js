@@ -8,22 +8,24 @@ class AppFilterProducts extends Component {
         
 
     render(){
-        const div = this.props.liData.map(({name}) => {
-            console.log(name);
-            return(
-                <div key ={name}>
-                    <li>
-                        <label for={name}>{name}</label>
-                        <input id={name} type="checkbox" placeholder/>
-                    </li>
-                   <li key = {name} className="items-nav__product">
-                        <a href="#" className="items-nav__item">{name}</a>
-                        <div onClick={(e)=>{this.props.onDelLiData(name)}} className="items-nav__close"></div>                          
-                    </li>  
-                </div>
-                
+        const li = this.props.liData.map(({name}) => {
+            return(                
+                <li key = {name} className="items-nav__product">
+                    <a href="#" className="items-nav__item">{name}</a>
+                    <div onClick={(e)=>{this.props.onDelLiData(name)}} className="items-nav__close"></div>                          
+                </li>
             )
           })
+
+        const liSlide = this.props.dataSlide.map(({lable, id}) => {
+            return(
+                <li className="items-nav__product" key={lable}>
+                    <label htmlFor={id}>{id}</label>
+                    <input id={id} type="checkbox"/>
+                </li>
+            )
+        })
+
         const {changeClassAccordion, accordion} = this.props   
         return(
             <section className="AppFilterProducts"> 
@@ -33,12 +35,16 @@ class AppFilterProducts extends Component {
                         <div className="nav__item items-nav">
                             <div className="items-nav__title">Товары для сравнения</div>
                                 <ul className="items-nav__wrapper">
-                                    {div}                              
+                                    {li}                              
                                 </ul>                                              
                         </div>
-                        <div className="accordion" id="accordionExample">
-                            
+                        <div className="nav__item items-nav">
+                            <div className="items-nav__title">Товары для сравнения</div>
+                                <ul className="items-nav__wrapper">
+                                    {liSlide}                              
+                                </ul>                                              
                         </div>
+                        
                     </nav>
                 </div>
 
@@ -63,9 +69,6 @@ class AppFilterProducts extends Component {
                         </div>
                     </div>
 
-
-
-                    
                     <div className="accordion-item">
                         <h2 className="accordion-header" id="headingTwo">
                         <button onClick={(e)=> changeClassAccordion(e.target.getAttribute("data-bs-target"))} className={`accordion-button ${accordion[1].collapsed}`}  type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
