@@ -5,11 +5,7 @@ import { Component } from "react"
 
 
 class AppFilterProducts extends Component {
-    
-    // renderSlide = (id) => {
-    //     this.props.onChangeShowDataSlide(id)
-    //     // this.props.showDataSlide()
-    // }
+  
 
     render(){
         

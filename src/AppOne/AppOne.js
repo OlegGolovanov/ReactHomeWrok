@@ -1,7 +1,10 @@
-import './AppOne.css';
+import './AppOne.sass';
+
 import AppOneHeader from "../AppOneHeader/AppOneHeader"
 import AppFilterProducts from "../AppFilterProducts/AppFilterProducts"
 import AppSliderSwiper from "../AppSliderSwiper/AppSliderSwiper"
+import AppFormProducts from "../AppFormProducts/AppFormProducts"
+
 import {Component} from "react"
 
 
@@ -31,48 +34,35 @@ class AppOne extends Component {
       {dataAttribute: "#collapseThree", show: "", collapsed: "collapsed"},
     ],    
     dataSlide: [
-        {lable: brand, id: "brand", show: true},
-        {lable: bulls, id: "bulls", show: true},
-        {lable: cocaCola, id: "cocaCola", show: true},
-        {lable: football, id: "football", show: true},
-        {lable: guchi, id: "guchi", show: true},
-        {lable: lacoste, id: "lacoste", show: true},
-        {lable: nike, id: "nike", show: true},
-        {lable: puma, id: "puma", show: true},
-        {lable: reebork, id: "reebork", show: true},      
-        {lable: sport, id: "sport", show: true}
+      {lable: brand, id: "brand", show: false},
+      {lable: bulls, id: "bulls", show: false},
+      {lable: cocaCola, id: "cocaCola", show: false},
+      {lable: football, id: "football", show: false},
+      {lable: guchi, id: "guchi", show: false},
+      {lable: lacoste, id: "lacoste", show: false},
+      {lable: nike, id: "nike", show: false},
+      {lable: puma, id: "puma", show: false},
+      {lable: reebork, id: "reebork", show: false},      
+      {lable: sport, id: "sport", show: false}
     ]
+  }  
 
+  showDataSlide = () => {      
+      return this.state.dataSlide.filter(item => {
+          return item.show == true        
+        })       
   }
-
-  
-
-  // showDataSlide = () => {
-      
-  //     const copy =  this.state.dataSlide.filter(item => {
-  //         // console.log(item.show);
-  //         return item.show == true        
-  //       })
-  //       console.log(copy);
-  //     return copy
-       
-  // }
 
   onChangeShowDataSlide = (id) => {
-    this.setState({
-      dataSlide: this.state.dataSlide.map(item => {            
-        if(item.id === id) {  
-          // item.show =  !item.show        
-          return {...item, show: !item.show}
-          // return item
-        }
-        return
+      this.setState({
+        dataSlide: this.state.dataSlide.map(item=> {
+          if(item.id === id) {
+            return {...item, show: !item.show}          
+          }
+          return item      
       })
-    })    
-    console.log(this.state.dataSlide);
+    })
   }
-
-
 
   onDelLiData = (name) => {
     this.setState({
@@ -95,22 +85,34 @@ class AppOne extends Component {
       })
     })  
   }
+
+  addState = (e, name) => {
+    e.preventDefault()
+    const newLidata = this.state.liData
+    newLidata.push({name})
+
+    this.setState({
+      liData: newLidata
+    })
+  }
   
   render(){
-    // console.log(this.showDataSlide());
     return (
       <>
         <AppOneHeader/>
-        <AppFilterProducts
-          onDelLiData = {this.onDelLiData}
-          liData = {this.state.liData}
-          accordion = {this.state.accordion}
-          changeClassAccordion = {this.changeClassAccordion}
-          dataSlide = {this.state.dataSlide}
-          onChangeShowDataSlide = {this.onChangeShowDataSlide}
-          showDataSlide = {this.showDataSlide}
-        />
-        <AppSliderSwiper dataSlide = {this.state.dataSlide}/>        
+        <div className="_wrapper">
+          <AppFilterProducts
+            onDelLiData = {this.onDelLiData}
+            liData = {this.state.liData}
+            accordion = {this.state.accordion}
+            changeClassAccordion = {this.changeClassAccordion}
+            dataSlide = {this.state.dataSlide}
+            onChangeShowDataSlide = {this.onChangeShowDataSlide}
+            showDataSlide = {this.showDataSlide}
+          />
+          <AppFormProducts addState={this.addState}/>
+        </div>
+        <AppSliderSwiper dataSlide = {this.showDataSlide()}/>        
       </>
     );
   }
