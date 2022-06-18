@@ -6,10 +6,10 @@ import { Component } from "react"
 
 class AppFilterProducts extends Component {
     
-    renderSlide = (id) => {
-        this.props.onChangeShowDataSlide(id)
-        this.props.showDataSlide()
-    }
+    // renderSlide = (id) => {
+    //     this.props.onChangeShowDataSlide(id)
+    //     // this.props.showDataSlide()
+    // }
 
     render(){
         
@@ -26,7 +26,7 @@ class AppFilterProducts extends Component {
             return(
                 <li className="items-nav__product" key={lable}>
                     <label htmlFor={id}>{id}</label>
-                    <input id={id} onClick={(e)=> {this.renderSlide(id)}} type="checkbox"/>
+                    <input id={id} onClick={(e)=> {this.props.onChangeShowDataSlide(id)}} type="checkbox"/>
                 </li>
             )
         })

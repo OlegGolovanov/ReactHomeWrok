@@ -40,33 +40,38 @@ class AppOne extends Component {
         {lable: nike, id: "nike", show: true},
         {lable: puma, id: "puma", show: true},
         {lable: reebork, id: "reebork", show: true},      
-        {lable: sport, id: "sport", show: true},
-    ],  
+        {lable: sport, id: "sport", show: true}
+    ]
 
   }
 
   
 
-  showDataSlide = () => {
-    this.setState({
-      dataSlide: this.state.dataSlide.filter(({show})=> {
-          return show === true        
-      })
-    })
-  }
+  // showDataSlide = () => {
+      
+  //     const copy =  this.state.dataSlide.filter(item => {
+  //         // console.log(item.show);
+  //         return item.show == true        
+  //       })
+  //       console.log(copy);
+  //     return copy
+       
+  // }
 
   onChangeShowDataSlide = (id) => {
     this.setState({
       dataSlide: this.state.dataSlide.map(item => {            
         if(item.id === id) {  
-          item.show = !item.show        
-          // return {...item, show: !item.show}
-          return item
+          // item.show =  !item.show        
+          return {...item, show: !item.show}
+          // return item
         }
         return
       })
-    })
+    })    
+    console.log(this.state.dataSlide);
   }
+
 
 
   onDelLiData = (name) => {
@@ -92,6 +97,7 @@ class AppOne extends Component {
   }
   
   render(){
+    // console.log(this.showDataSlide());
     return (
       <>
         <AppOneHeader/>
