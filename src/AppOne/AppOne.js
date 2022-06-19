@@ -87,14 +87,12 @@ class AppOne extends Component {
   }
 
   addState = (e, name) => {
-    e.preventDefault()
-    const newLidata = this.state.liData
-    newLidata.push({name})
-
+    e.preventDefault()       
     this.setState({
-      liData: newLidata
+      liData: [...this.state.liData, {name}]
     })
   }
+
   
   render(){
     return (

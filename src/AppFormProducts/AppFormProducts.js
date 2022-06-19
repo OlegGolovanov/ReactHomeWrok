@@ -11,20 +11,17 @@ class AppFormProducts extends Component {
     id = 1
 
     onAdd = (e) => {
-        console.log(e.target.value);
         e.preventDefault()
         this.setState({
             name: e.target.value
         })
-        this.setState({
-            id: this.state.id++
-        })
+        
     }
 
 
     render(){       
         return(
-            <form>
+            <form >
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input
