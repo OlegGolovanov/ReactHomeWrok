@@ -5,17 +5,22 @@ import { Component } from "react"
 
 class AppFormProducts extends Component {
     state = {
-        name: "",
-        id: ''
+        name: ""        
     }
-    id = 1
+    
 
     onAdd = (e) => {
-        e.preventDefault()
+        e.preventDefault()       
         this.setState({
             name: e.target.value
+        })                  
+    }
+
+    onResetFormAdd = (e) => {
+        this.props.addState(e, this.state.name)
+        this.setState({
+            name: ""
         })
-        
     }
 
 
@@ -32,7 +37,7 @@ class AppFormProducts extends Component {
                     aria-describedby="emailHelp"/>
                     <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                 </div>                
-                <button onClick={(e)=>{this.props.addState(e, this.state.name)}} type="submit" className="btn btn-primary">Submit</button>
+                <button onClick={(e)=>{this.onResetFormAdd(e)}} type="submit" className="btn btn-primary">Submit</button>
             </form>
         )
     }

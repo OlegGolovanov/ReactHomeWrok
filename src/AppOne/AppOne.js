@@ -87,10 +87,13 @@ class AppOne extends Component {
   }
 
   addState = (e, name) => {
-    e.preventDefault()       
-    this.setState({
-      liData: [...this.state.liData, {name}]
-    })
+    e.preventDefault()   
+    if(document.querySelector('.mb-3 > input').value != "") {       
+      this.setState({
+        liData: [...this.state.liData, {name}]
+      })
+      document.querySelector('form').reset();
+    }    
   }
 
   
